@@ -1,0 +1,15 @@
+# Archivos compilados de Java
+bin/
+out/
+*.class
+
+# Configuración personal de editores
+.vscode/
+.idea/
+*.iml
+
+# Sistema operativo (Mac)
+.DS_Store
+
+# Logs y temporales
+*.log
