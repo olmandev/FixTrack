@@ -1,6 +1,7 @@
 package Vista;
 
 import soportetecnico_g7.CambiarEscena;
+import javax.swing.Box;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,6 +18,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -69,17 +71,37 @@ public class Clientes_CRUD extends JPanel {
     }
 
     private void initComponents() {
-        setLayout(new BorderLayout(0, 22));
+        setLayout(new BorderLayout());
         setBackground(GRIS_CLARO);
-        setBorder(new EmptyBorder(30, 36, 30, 36));
 
-        add(construirEncabezado(), BorderLayout.NORTH);
+        JPanel pagina = new JPanel();
+        pagina.setLayout(new BoxLayout(pagina, BoxLayout.Y_AXIS));
+        pagina.setBackground(GRIS_CLARO);
+        pagina.setBorder(new EmptyBorder(30, 36, 30, 36));
 
-        JPanel cuerpo = new JPanel(new BorderLayout(0, 22));
-        cuerpo.setOpaque(false);
-        cuerpo.add(construirFormulario(), BorderLayout.NORTH);
-        cuerpo.add(construirListado(), BorderLayout.CENTER);
-        add(cuerpo, BorderLayout.CENTER);
+        JPanel encabezado = construirEncabezado();
+        JPanel formulario = construirFormulario();
+        JPanel listado = construirListado();
+
+        encabezado.setAlignmentX(LEFT_ALIGNMENT);
+        formulario.setAlignmentX(LEFT_ALIGNMENT);
+        listado.setAlignmentX(LEFT_ALIGNMENT);
+
+        listado.setPreferredSize(new Dimension(100, 420));
+        listado.setMinimumSize(new Dimension(100, 420));
+        listado.setMaximumSize(new Dimension(Integer.MAX_VALUE, 420));
+
+        pagina.add(encabezado);
+        pagina.add(Box.createVerticalStrut(22));
+        pagina.add(formulario);
+        pagina.add(Box.createVerticalStrut(22));
+        pagina.add(listado);
+
+        JScrollPane scroll = new JScrollPane(pagina);
+        scroll.setBorder(null);
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+        scroll.getViewport().setBackground(GRIS_CLARO);
+        add(scroll, BorderLayout.CENTER);
     }
 
     // ---------- Encabezado ----------

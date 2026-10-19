@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -85,14 +86,6 @@ public class Login extends JPanel {
 
         panel.add(Box.createVerticalStrut(10));
 
-        /*JLabel lblDescripcion = new JLabel(
-                "<html><div style='text-align:center; width:240px'>Plataforma interna para la gestión "
-                + "de servicios y mantenimiento de equipos.</div></html>");
-        lblDescripcion.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        lblDescripcion.setForeground(GRIS_OSCURO);
-        lblDescripcion.setAlignmentX(CENTER_ALIGNMENT);
-        panel.add(lblDescripcion);*/
-
         panel.add(Box.createVerticalGlue());
         return panel;
     }
@@ -109,9 +102,11 @@ public class Login extends JPanel {
         formulario.setBackground(AZUL_MARINO);
         formulario.setAlignmentX(CENTER_ALIGNMENT);
         formulario.setPreferredSize(new Dimension(420, 380));
-        formulario.setMaximumSize(new Dimension(420, 380));
-
+        formulario.setMaximumSize(new Dimension(520, 480));
+ 
         JLabel lblBienvenida = new JLabel("Bienvenido(a)");
+        lblBienvenida.setIcon(new Icono(Icono.Tipo.CLIENTES, 34, Color.WHITE));
+        lblBienvenida.setIconTextGap(14);   // separación entre icono y texto
         lblBienvenida.setFont(new Font("SansSerif", Font.BOLD, 30));
         lblBienvenida.setForeground(GRIS_CLARO);
         lblBienvenida.setAlignmentX(LEFT_ALIGNMENT);
@@ -127,7 +122,7 @@ public class Login extends JPanel {
         txtUsuario = new CampoTexto("Usuario");
         configurarCampo(txtUsuario);
         formulario.add(txtUsuario);
-
+    
         formulario.add(Box.createVerticalStrut(16));
 
         txtClave = new CampoClave("Contraseña");
@@ -200,7 +195,7 @@ public class Login extends JPanel {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(Color.WHITE);
-        g2.fillRoundRect(0, 0, c.getWidth() - 1, c.getHeight() - 1, ARCO, ARCO);
+        g2.fillRoundRect(0, 0, c.getWidth() -1, c.getHeight() - 1, ARCO, ARCO);
         g2.dispose();
     }
 
